@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>React! React! React!</title>
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <style type="text/css">
+  	#container {
+  padding: 50px;
+  background-color: #EEE;
+}
+#container h1 {
+  font-size: 48px;
+  font-family: sans-serif;
+  color: #0080A8;
+}
+/*.letter {
+padding: 10px;
+margin: 10px;
+background-color: #ffde00;
+color: #333;
+display: inline-block;
+font-family: monospace;
+font-size: 32px;
+text-align: center;
+}*/
+  </style>
+
+</head>
+ 
+<body>
+	<div id="container"></div>
+ <script type="text/babel">
+var Box = React.createClass({
+  render: function() {
+    var boxStyle = {
+    marginTop: 30,
+    marginBottom: 30,
+      backgroundColor: this.props.bgcolor,
+      display: "block",
+      width: this.props.width,
+      height:this.props.height,
+      textAlign: "center"
+    };
+
+    return <div style={boxStyle} >&nbsp;</div>;
+  }
+});
+
+
+
+var destination = document.querySelector("#container");
+
+ReactDOM.render(
+  <div>
+    <Box bgcolor="#58B3FF" width="60px" height="70px"></Box>
+    <Box bgcolor="#FF605F" width="60" height="20"></Box>
+    <Box bgcolor="#FFD52E" width="120" height="30"></Box>
+    <Box bgcolor="#49DD8E" width="60" height="100"></Box>
+    <Box bgcolor="#AE99FF" width="90" height="90"></Box>
+  </div>,
+  destination
+);
+
+  </script>
+
+</body>
