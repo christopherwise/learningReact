@@ -36,17 +36,15 @@ text-align: center;
 var Letter = React.createClass({
   render: function() {
     var letterStyle = {
-      padding: 10,
-      margin: 10,
+      marginBottom: 30,
+      marginTop: 30,
       backgroundColor: this.props.bgcolor,
-      color: "#333",
-      display: "inline-block",
-      fontFamily: "monospace",
-      fontSize: 32,
-      textAlign: "center"
+      display: "block",
+      height: this.props.height,
+      width: this.props.width
     };
 
-    return <div style={letterStyle} >{this.props.children}</div>;
+    return <div style={letterStyle}></div>;
   }
 });
 
@@ -56,11 +54,11 @@ var destination = document.querySelector("#container");
 
 ReactDOM.render(
   <div>
-    <Letter bgcolor="#58B3FF">A</Letter>
-    <Letter bgcolor="#FF605F">E</Letter>
-    <Letter bgcolor="#FFD52E">I</Letter>
-    <Letter bgcolor="#49DD8E">O</Letter>
-    <Letter bgcolor="#AE99FF">U</Letter>
+    <Letter bgcolor="#58B3FF" height="70px" width="45px"></Letter>
+    <Letter bgcolor="#FF605F" height="110" width="45"></Letter>
+    <Letter bgcolor="#FFD52E" height="30" width="35"></Letter>
+    <Letter bgcolor="#49DD8E" height="70" width="95"></Letter>
+    <Letter bgcolor="#AE99FF" height="70" width="45"></Letter>
   </div>,
   destination
 );
