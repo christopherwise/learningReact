@@ -40,15 +40,21 @@ class Circle extends React.Component {
     }
 }
 
-class CounterParent extends React.Component {
+class ExtraCircle extends React.Component {
+    render() {
+         return(<div> {this.props.display} </div>)
+    }
+}
 
+class CounterParent extends React.Component {
     constructor(props, context) {
         super(props, context);
 
         console.log("constructor: Default state time!");
 
         this.state = {
-            count: 0
+            count: 0,
+            circle: []
         };
 
         this.increase = this.increase.bind(this);
@@ -62,20 +68,21 @@ class CounterParent extends React.Component {
     }
 
     increase() {
-        var xxx = [];
+        
         this.setState({
             count: this.state.count + 1
         });
-
-        
-
+        this.pushIt();
+    }
+    pushIt() {
         var color = colors[this.state.count];
-        xxx.push(
-            <div>
-                <Circle key={color} bgColor={color} />
-            </div>
-        );
-        ReactDOM.render(<div> {xxx} </div>, circleContain);
+        this.setState(previousState => ({
+            circle: [
+                ...previousState.circle,
+                <Circle key={this.state.count + color} bgColor={color} />
+            ]
+        }));
+     
     }
 
     shouldComponentUpdate(newProps, newState) {
@@ -105,9 +112,14 @@ class CounterParent extends React.Component {
         };
 
         return (
-            <div style={backgroundStyle}>
-                <Counter display={this.state.count} />
-                <button onClick={this.increase}>+</button>
+            <div>
+                <div style={backgroundStyle}>
+                    <Counter display={this.state.count} />
+                    <button onClick={this.increase}>+</button>
+                </div>
+                <div>
+                    <ExtraCircle display={this.state.circle} />
+                </div>
             </div>
         );
     }
@@ -121,7 +133,6 @@ ReactDOM.render(
         <div>
             <CounterParent />
         </div>
-        <div id="circleContain" />
     </div>,
     counter
 );
