@@ -80,7 +80,7 @@ class CounterParent extends React.Component {
             circle: [
                 ...previousState.circle,
                 <Circle key={this.state.count + color} bgColor={color} />
-            ]
+            ] /* https://stackoverflow.com/questions/26505064/react-js-what-is-the-best-way-to-add-a-value-to-an-array-in-state */
         }));
      
     }
